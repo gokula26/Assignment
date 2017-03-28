@@ -1,0 +1,69 @@
+package AppExam;
+
+
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.concurrent.TimeUnit;
+
+import io.appium.java_client.ios.IOSDriver;
+
+import org.openqa.selenium.remote.DesiredCapabilities;
+public class Appios {
+
+	public static void main(String[] args) throws MalformedURLException,InterruptedException  {
+		DesiredCapabilities capabilities= new DesiredCapabilities();
+		capabilities.setCapability("platformname", "iOS");
+		capabilities.setCapability("platformVersion", "9.1");
+		capabilities.setCapability("deviceName", "iPhone 6");
+		capabilities.setCapability("app", "settings");
+		IOSDriver driver=new IOSDriver(new URL("http://0.0.0.0:4723/wd/hub"),capabilities);
+		driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
+		System.out.println("fjyhgjkhblk");
+	}
+
+}
+
+
+
+
+
+
+package AppExam;
+
+import java.io.File;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.concurrent.TimeUnit;
+
+import io.appium.java_client.ios.IOSDriver;
+import io.appium.java_client.remote.MobileCapabilityType;
+
+import org.openqa.selenium.remote.DesiredCapabilities;
+
+public class Sample {
+	public static void main(String args[]) throws MalformedURLException
+	{
+	// Using the file class to connect with app
+	File f=new File("/Users/sravanthigokula/Documents/Ios/UI-Catalog-App.zip");
+	// declaring desired capabilities
+	DesiredCapabilities d=new DesiredCapabilities();
+	// using platform version of the device
+	d.setCapability(MobileCapabilityType.PLATFORM_VERSION,"8.1");
+	d.setCapability("platformName", "iOS");
+	// name of the devise in simulator
+	d.setCapability(MobileCapabilityType.DEVICE_NAME, "iPhone 6");
+	//browser name we should keep empty
+	d.setCapability(MobileCapabilityType.BROWSER_NAME, "");
+	// getting the absolute path
+	d.setCapability(MobileCapabilityType.APP, f.getAbsolutePath());
+	// Invoking the Ios driver by giving appium path
+	IOSDriver driver=new IOSDriver(new URL("http://0.0.0.0:4723/wd/hub"),d);
+	driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
+
+	}
+	
+	
+
+}
+
+
